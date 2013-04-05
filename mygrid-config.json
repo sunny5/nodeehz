@@ -1,0 +1,34 @@
+{
+	"inverter-count":3,
+        "groupchat-server":"myserver.think5.de",
+        "groupchat-port":5232,
+        "groupchat-room":"room123abc@myserver.think5.de",
+        "groupchat-user":"inverter",
+        "groupchat-pass":"mypass",
+        "groupchat-ehz-user":"ehz",
+        "groupchat-ehz-pass":"mypass",
+	"inverters":
+	[
+		{
+			"type" : "aurora",
+			"string-count" : 1,
+			"address" : 2,
+			"installed-wp" : 4160,
+			"device" : "192.168.0.5:4000" 
+		},
+		{
+			"type" : "aurora",
+			"string-count" : 1,
+			"address" : 3,
+			"installed-wp" : 3840,
+			"device" : "192.168.0.5:4000"
+		},
+		{
+			"type" : "aurora",
+			"string-count" : 1,
+			"address" : 4,
+			"installed-wp" : 6400,
+			"device" : "192.168.0.5:4000"
+		}
+	]
+}
