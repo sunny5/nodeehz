@@ -43,19 +43,24 @@ var chunk = "";
 serial_port.on("data", function (data) {
    chunk += data.toString('hex');
    if (chunk.match(regCompleteMsg)) {
+      var bolSend = false;
       arr15_7_0 = chunk.match(reg15_7_0);
       arr1_8_0 = chunk.match(reg1_8_0);
       arr2_8_0 = chunk.match(reg2_8_0);
-      int15_7_0 = parseInt(arr15_7_0[1],16)/10;
-      int1_8_0 = parseInt(arr1_8_0[1],16)/10000;
-      int2_8_0 = parseInt(arr2_8_0[1],16)/10000;
-
-      if (arr1_8_0[1] > int1_8_0prev) {
-         int1_8_0prev = arr1_8_0[1];
-      }
-      else {
-         int1_8_0prev = arr1_8_0[1];
-         int15_7_0 = int15_7_0*-1;
+      
+      if (arr15_7_0 != null && arr1_8_0 != null && arr2_8_0 != null) {
+        int15_7_0 = parseInt(arr15_7_0[1],16)/10;
+        int1_8_0 = parseInt(arr1_8_0[1],16)/10000;
+        int2_8_0 = parseInt(arr2_8_0[1],16)/10000;
+      
+        if (arr1_8_0[1] > int1_8_0prev) {
+           int1_8_0prev = arr1_8_0[1];
+        }
+        else {
+           int1_8_0prev = arr1_8_0[1];
+           int15_7_0 = int15_7_0*-1;
+        }
+        bolSend = true;
       }
 
       console.log('---new data---');
@@ -64,7 +69,7 @@ serial_port.on("data", function (data) {
       console.log("Gesamt Einspeisung: " + int2_8_0 + " kW");
       //console.log(chunk);
 
-      if (conn.JOINEDROOM == true) {
+      if (conn.JOINEDROOM == true && bolSend == true) {
           conn.send("<message from='"+strGroupchatRoom+"/ehz' id='mymsg' to='"+strGroupchatRoom+"' type='groupchat'><body>e:"+Math.round(parseInt(arr15_7_0[1],16)/10)+"</body></message>");
           console.log("Groupchat message sent.");
        }
