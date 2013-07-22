@@ -1,12 +1,12 @@
 {
 	"inverter-count":3,
-        "groupchat-server":"myserver.think5.de",
+        "groupchat-server":"zeus.think5.de",
         "groupchat-port":5232,
-        "groupchat-room":"room123abc@myserver.think5.de",
+        "groupchat-room":"ri34ab1@zeus.think5.de",
         "groupchat-user":"inverter",
-        "groupchat-pass":"mypass",
+        "groupchat-pass":"inverter",
         "groupchat-ehz-user":"ehz",
-        "groupchat-ehz-pass":"mypass",
+        "groupchat-ehz-pass":"ehz",
 	"inverters":
 	[
 		{

@@ -19,6 +19,11 @@ serial_port.on("data", function (data) {
       arr15_7_0 = chunk.match(reg15_7_0);
       arr1_8_0 = chunk.match(reg1_8_0);
       arr2_8_0 = chunk.match(reg2_8_0);
+      
+      if (arr15_7_0 == null || arr1_8_0 == null || arr2_8_0 == null) {
+         return;
+      }
+
       int15_7_0 = parseInt(arr15_7_0[1],16)/10;
       int1_8_0 = parseInt(arr1_8_0[1],16)/10000;
       int2_8_0 = parseInt(arr2_8_0[1],16)/10000;
